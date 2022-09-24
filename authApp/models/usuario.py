@@ -4,21 +4,16 @@ from django.contrib.auth.hashers import make_password
 
 class UserManager(BaseUserManager):
     def create_user(self, username, password=None):
-        """
-        Creates and saves a user with the given username and password.
-        """
+        #Crea y guarda un usuario con el nombre de usuario y la contraseña.        
         if not username:
-            raise ValueError('Users must have an username')
+            raise ValueError('El usuario debe tener un nombre')
         user = self.model(username=username)
         user.set_password(password)
         user.save(using=self._db)
         return user
-        #Para este modelo no es necesario la creaación de Superusuario
+        #Para este modelo no es necesario la creación de SuperUsuario
     """
-    def create_superuser(self, username, password):
-        
-        #Creates and saves a superuser with the given username and password.
-        
+    def create_superuser(self, username, password):       
         user = self.create_user(
         username=username,
         password=password,
@@ -28,7 +23,8 @@ class UserManager(BaseUserManager):
         return user
     """    
 class Usuario(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(primary_key=True, max_length = 15, unique=True)    
+    id = models.AutoField(primary_key=True) #tocaría cambiar la primary_key de username por 'Username'
+    username = models.CharField('Username', max_length = 15, unique=True)    
     password = models.CharField('Password', max_length = 256)
     perfil = models.CharField('Perfil', max_length = 40)
     nombre = models.CharField('Nombre', max_length = 40)
