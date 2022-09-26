@@ -1,5 +1,5 @@
 import imp
-from tkinter import CASCADE
+#from tkinter import CASCADE
 from django.db import models
 from .usuario import Usuario
 from .personal_de_salud import Personal_salud
