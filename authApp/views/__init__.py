@@ -4,3 +4,4 @@ from .crearfamiliarview import CrearFamiliarView
 from .crearpacienteview import CrearPacienteView
 from .crearhistoriaview import CrearHistoriaView
 from .consultarpacienteview import ConsultaPacienteView
+from .crearsignosview import CrearSignosView
